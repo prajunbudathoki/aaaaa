@@ -5,11 +5,148 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider = "prisma-client"
   output   = "../app/generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model User {
+  id                  String       @id
+  name                String
+  email               String
+  emailVerified       Boolean
+  image               String?
+  phoneNumber         String?
+  phoneNumberVerified Boolean?
+  createdAt           DateTime
+  updatedAt           DateTime
+  sessions            Session[]
+  accounts            Account[]
+  UserInfo            UserInfo?
+  DepartMent          DepartMent[]
+  Project             Project[]
+  Task                Task[]
+
+  @@unique([email])
+  @@unique([phoneNumber])
+  @@map("user")
+}
+
+model UserInfo {
+  id                String        @id
+  dateOfBirh        DateTime
+  nationality       String
+  citizenshipNumber String
+  panNumber         String
+  userId            String
+  user              User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  bankDetails       BankDetails[]
+
+  @@unique([userId])
+  @@map("user_info")
+}
+
+model BankDetails {
+  id            String   @id
+  bankName      String
+  accountNumber String
+  branch        String
+  name          String
+  userInfoId    String
+  userInfo      UserInfo @relation(fields: [userInfoId], references: [id], onDelete: Cascade)
+
+  @@map("bank_details")
+}
+
+model Session {
+  id        String   @id
+  expiresAt DateTime
+  token     String
+  createdAt DateTime
+  updatedAt DateTime
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([token])
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime
+  updatedAt             DateTime
+
+  @@map("account")
+}
+
+model Verification {
+  id         String    @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime?
+  updatedAt  DateTime?
+
+  @@map("verification")
+}
+
+model DepartMent {
+  id        String   @id
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  users     User[]
+
+  @@map("department")
+}
+
+model Project {
+  id          String         @id
+  name        String
+  description String
+  image       String?
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+  users       User[]
+  groups      ProjectGroup[]
+
+  @@map("project")
+}
+
+model ProjectGroup {
+  id          String  @id
+  name        String
+  description String
+  Project     Project @relation(fields: [projectId], references: [id])
+  projectId   String
+  tasks       Task[]
+}
+
+model Task {
+  id             String        @id
+  title          String
+  description    String
+  dueDate        DateTime?
+  startDate      DateTime?
+  ProjectGroup   ProjectGroup? @relation(fields: [projectGroupId], references: [id])
+  projectGroupId String?
+  completed      Boolean       @default(false)
+  users          User[]
 }
