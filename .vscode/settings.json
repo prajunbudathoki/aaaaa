@@ -5,6 +5,5 @@
         "**/.hg": true,
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
-        "db_data" :true
     }
 }

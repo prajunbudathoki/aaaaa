@@ -3,7 +3,7 @@ services:
     container_name: db
     image: postgres:latest
     volumes:
-      - ./db_data:/var/lib/postgresql/data
+      - ~/dbdata:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=pass123
     ports:
