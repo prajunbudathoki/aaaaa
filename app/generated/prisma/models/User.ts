@@ -33,6 +33,10 @@ export type UserMinAggregateOutputType = {
   phoneNumberVerified: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
+  role: string | null
+  banned: boolean | null
+  banReason: string | null
+  banExpires: Date | null
 }
 
 export type UserMaxAggregateOutputType = {
@@ -45,6 +49,10 @@ export type UserMaxAggregateOutputType = {
   phoneNumberVerified: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
+  role: string | null
+  banned: boolean | null
+  banReason: string | null
+  banExpires: Date | null
 }
 
 export type UserCountAggregateOutputType = {
@@ -57,6 +65,10 @@ export type UserCountAggregateOutputType = {
   phoneNumberVerified: number
   createdAt: number
   updatedAt: number
+  role: number
+  banned: number
+  banReason: number
+  banExpires: number
   _all: number
 }
 
@@ -71,6 +83,10 @@ export type UserMinAggregateInputType = {
   phoneNumberVerified?: true
   createdAt?: true
   updatedAt?: true
+  role?: true
+  banned?: true
+  banReason?: true
+  banExpires?: true
 }
 
 export type UserMaxAggregateInputType = {
@@ -83,6 +99,10 @@ export type UserMaxAggregateInputType = {
   phoneNumberVerified?: true
   createdAt?: true
   updatedAt?: true
+  role?: true
+  banned?: true
+  banReason?: true
+  banExpires?: true
 }
 
 export type UserCountAggregateInputType = {
@@ -95,6 +115,10 @@ export type UserCountAggregateInputType = {
   phoneNumberVerified?: true
   createdAt?: true
   updatedAt?: true
+  role?: true
+  banned?: true
+  banReason?: true
+  banExpires?: true
   _all?: true
 }
 
@@ -180,6 +204,10 @@ export type UserGroupByOutputType = {
   phoneNumberVerified: boolean | null
   createdAt: Date
   updatedAt: Date
+  role: string | null
+  banned: boolean | null
+  banReason: string | null
+  banExpires: Date | null
   _count: UserCountAggregateOutputType | null
   _min: UserMinAggregateOutputType | null
   _max: UserMaxAggregateOutputType | null
@@ -213,11 +241,15 @@ export type UserWhereInput = {
   phoneNumberVerified?: Prisma.BoolNullableFilter<"User"> | boolean | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  role?: Prisma.StringNullableFilter<"User"> | string | null
+  banned?: Prisma.BoolNullableFilter<"User"> | boolean | null
+  banReason?: Prisma.StringNullableFilter<"User"> | string | null
+  banExpires?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   sessions?: Prisma.SessionListRelationFilter
   accounts?: Prisma.AccountListRelationFilter
-  UserInfo?: Prisma.XOR<Prisma.UserInfoNullableScalarRelationFilter, Prisma.UserInfoWhereInput> | null
-  DepartMent?: Prisma.DepartMentListRelationFilter
-  Project?: Prisma.ProjectListRelationFilter
+  userInfo?: Prisma.XOR<Prisma.UserInfoNullableScalarRelationFilter, Prisma.UserInfoWhereInput> | null
+  departments?: Prisma.DepartmentListRelationFilter
+  projects?: Prisma.ProjectListRelationFilter
   Task?: Prisma.TaskListRelationFilter
 }
 
@@ -231,11 +263,15 @@ export type UserOrderByWithRelationInput = {
   phoneNumberVerified?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  role?: Prisma.SortOrderInput | Prisma.SortOrder
+  banned?: Prisma.SortOrderInput | Prisma.SortOrder
+  banReason?: Prisma.SortOrderInput | Prisma.SortOrder
+  banExpires?: Prisma.SortOrderInput | Prisma.SortOrder
   sessions?: Prisma.SessionOrderByRelationAggregateInput
   accounts?: Prisma.AccountOrderByRelationAggregateInput
-  UserInfo?: Prisma.UserInfoOrderByWithRelationInput
-  DepartMent?: Prisma.DepartMentOrderByRelationAggregateInput
-  Project?: Prisma.ProjectOrderByRelationAggregateInput
+  userInfo?: Prisma.UserInfoOrderByWithRelationInput
+  departments?: Prisma.DepartmentOrderByRelationAggregateInput
+  projects?: Prisma.ProjectOrderByRelationAggregateInput
   Task?: Prisma.TaskOrderByRelationAggregateInput
 }
 
@@ -252,11 +288,15 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   phoneNumberVerified?: Prisma.BoolNullableFilter<"User"> | boolean | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  role?: Prisma.StringNullableFilter<"User"> | string | null
+  banned?: Prisma.BoolNullableFilter<"User"> | boolean | null
+  banReason?: Prisma.StringNullableFilter<"User"> | string | null
+  banExpires?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   sessions?: Prisma.SessionListRelationFilter
   accounts?: Prisma.AccountListRelationFilter
-  UserInfo?: Prisma.XOR<Prisma.UserInfoNullableScalarRelationFilter, Prisma.UserInfoWhereInput> | null
-  DepartMent?: Prisma.DepartMentListRelationFilter
-  Project?: Prisma.ProjectListRelationFilter
+  userInfo?: Prisma.XOR<Prisma.UserInfoNullableScalarRelationFilter, Prisma.UserInfoWhereInput> | null
+  departments?: Prisma.DepartmentListRelationFilter
+  projects?: Prisma.ProjectListRelationFilter
   Task?: Prisma.TaskListRelationFilter
 }, "id" | "email" | "phoneNumber">
 
@@ -270,6 +310,10 @@ export type UserOrderByWithAggregationInput = {
   phoneNumberVerified?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  role?: Prisma.SortOrderInput | Prisma.SortOrder
+  banned?: Prisma.SortOrderInput | Prisma.SortOrder
+  banReason?: Prisma.SortOrderInput | Prisma.SortOrder
+  banExpires?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
   _min?: Prisma.UserMinOrderByAggregateInput
@@ -288,10 +332,14 @@ export type UserScalarWhereWithAggregatesInput = {
   phoneNumberVerified?: Prisma.BoolNullableWithAggregatesFilter<"User"> | boolean | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
+  role?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  banned?: Prisma.BoolNullableWithAggregatesFilter<"User"> | boolean | null
+  banReason?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  banExpires?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
 }
 
 export type UserCreateInput = {
-  id: string
+  id?: string
   name: string
   email: string
   emailVerified: boolean
@@ -300,16 +348,20 @@ export type UserCreateInput = {
   phoneNumberVerified?: boolean | null
   createdAt: Date | string
   updatedAt: Date | string
+  role?: string | null
+  banned?: boolean | null
+  banReason?: string | null
+  banExpires?: Date | string | null
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  UserInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
-  DepartMent?: Prisma.DepartMentCreateNestedManyWithoutUsersInput
-  Project?: Prisma.ProjectCreateNestedManyWithoutUsersInput
+  userInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
+  departments?: Prisma.DepartmentCreateNestedManyWithoutUsersInput
+  projects?: Prisma.ProjectCreateNestedManyWithoutUsersInput
   Task?: Prisma.TaskCreateNestedManyWithoutUsersInput
 }
 
 export type UserUncheckedCreateInput = {
-  id: string
+  id?: string
   name: string
   email: string
   emailVerified: boolean
@@ -318,11 +370,15 @@ export type UserUncheckedCreateInput = {
   phoneNumberVerified?: boolean | null
   createdAt: Date | string
   updatedAt: Date | string
+  role?: string | null
+  banned?: boolean | null
+  banReason?: string | null
+  banExpires?: Date | string | null
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  UserInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
-  DepartMent?: Prisma.DepartMentUncheckedCreateNestedManyWithoutUsersInput
-  Project?: Prisma.ProjectUncheckedCreateNestedManyWithoutUsersInput
+  userInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
+  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUsersInput
+  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUsersInput
   Task?: Prisma.TaskUncheckedCreateNestedManyWithoutUsersInput
 }
 
@@ -336,11 +392,15 @@ export type UserUpdateInput = {
   phoneNumberVerified?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  UserInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
-  DepartMent?: Prisma.DepartMentUpdateManyWithoutUsersNestedInput
-  Project?: Prisma.ProjectUpdateManyWithoutUsersNestedInput
+  userInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
+  departments?: Prisma.DepartmentUpdateManyWithoutUsersNestedInput
+  projects?: Prisma.ProjectUpdateManyWithoutUsersNestedInput
   Task?: Prisma.TaskUpdateManyWithoutUsersNestedInput
 }
 
@@ -354,16 +414,20 @@ export type UserUncheckedUpdateInput = {
   phoneNumberVerified?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  UserInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
-  DepartMent?: Prisma.DepartMentUncheckedUpdateManyWithoutUsersNestedInput
-  Project?: Prisma.ProjectUncheckedUpdateManyWithoutUsersNestedInput
+  userInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
+  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutUsersNestedInput
+  projects?: Prisma.ProjectUncheckedUpdateManyWithoutUsersNestedInput
   Task?: Prisma.TaskUncheckedUpdateManyWithoutUsersNestedInput
 }
 
 export type UserCreateManyInput = {
-  id: string
+  id?: string
   name: string
   email: string
   emailVerified: boolean
@@ -372,6 +436,10 @@ export type UserCreateManyInput = {
   phoneNumberVerified?: boolean | null
   createdAt: Date | string
   updatedAt: Date | string
+  role?: string | null
+  banned?: boolean | null
+  banReason?: string | null
+  banExpires?: Date | string | null
 }
 
 export type UserUpdateManyMutationInput = {
@@ -384,6 +452,10 @@ export type UserUpdateManyMutationInput = {
   phoneNumberVerified?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type UserUncheckedUpdateManyInput = {
@@ -396,6 +468,10 @@ export type UserUncheckedUpdateManyInput = {
   phoneNumberVerified?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type UserCountOrderByAggregateInput = {
@@ -408,6 +484,10 @@ export type UserCountOrderByAggregateInput = {
   phoneNumberVerified?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  role?: Prisma.SortOrder
+  banned?: Prisma.SortOrder
+  banReason?: Prisma.SortOrder
+  banExpires?: Prisma.SortOrder
 }
 
 export type UserMaxOrderByAggregateInput = {
@@ -420,6 +500,10 @@ export type UserMaxOrderByAggregateInput = {
   phoneNumberVerified?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  role?: Prisma.SortOrder
+  banned?: Prisma.SortOrder
+  banReason?: Prisma.SortOrder
+  banExpires?: Prisma.SortOrder
 }
 
 export type UserMinOrderByAggregateInput = {
@@ -432,6 +516,10 @@ export type UserMinOrderByAggregateInput = {
   phoneNumberVerified?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  role?: Prisma.SortOrder
+  banned?: Prisma.SortOrder
+  banReason?: Prisma.SortOrder
+  banExpires?: Prisma.SortOrder
 }
 
 export type UserScalarRelationFilter = {
@@ -467,6 +555,10 @@ export type NullableBoolFieldUpdateOperationsInput = {
 
 export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
+}
+
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Date | string | null
 }
 
 export type UserCreateNestedOneWithoutUserInfoInput = {
@@ -511,79 +603,79 @@ export type UserUpdateOneRequiredWithoutAccountsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAccountsInput, Prisma.UserUpdateWithoutAccountsInput>, Prisma.UserUncheckedUpdateWithoutAccountsInput>
 }
 
-export type UserCreateNestedManyWithoutDepartMentInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutDepartMentInput, Prisma.UserUncheckedCreateWithoutDepartMentInput> | Prisma.UserCreateWithoutDepartMentInput[] | Prisma.UserUncheckedCreateWithoutDepartMentInput[]
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDepartMentInput | Prisma.UserCreateOrConnectWithoutDepartMentInput[]
+export type UserCreateNestedManyWithoutDepartmentsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDepartmentsInput, Prisma.UserUncheckedCreateWithoutDepartmentsInput> | Prisma.UserCreateWithoutDepartmentsInput[] | Prisma.UserUncheckedCreateWithoutDepartmentsInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDepartmentsInput | Prisma.UserCreateOrConnectWithoutDepartmentsInput[]
   connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
 }
 
-export type UserUncheckedCreateNestedManyWithoutDepartMentInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutDepartMentInput, Prisma.UserUncheckedCreateWithoutDepartMentInput> | Prisma.UserCreateWithoutDepartMentInput[] | Prisma.UserUncheckedCreateWithoutDepartMentInput[]
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDepartMentInput | Prisma.UserCreateOrConnectWithoutDepartMentInput[]
+export type UserUncheckedCreateNestedManyWithoutDepartmentsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDepartmentsInput, Prisma.UserUncheckedCreateWithoutDepartmentsInput> | Prisma.UserCreateWithoutDepartmentsInput[] | Prisma.UserUncheckedCreateWithoutDepartmentsInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDepartmentsInput | Prisma.UserCreateOrConnectWithoutDepartmentsInput[]
   connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
 }
 
-export type UserUpdateManyWithoutDepartMentNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutDepartMentInput, Prisma.UserUncheckedCreateWithoutDepartMentInput> | Prisma.UserCreateWithoutDepartMentInput[] | Prisma.UserUncheckedCreateWithoutDepartMentInput[]
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDepartMentInput | Prisma.UserCreateOrConnectWithoutDepartMentInput[]
-  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutDepartMentInput | Prisma.UserUpsertWithWhereUniqueWithoutDepartMentInput[]
+export type UserUpdateManyWithoutDepartmentsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDepartmentsInput, Prisma.UserUncheckedCreateWithoutDepartmentsInput> | Prisma.UserCreateWithoutDepartmentsInput[] | Prisma.UserUncheckedCreateWithoutDepartmentsInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDepartmentsInput | Prisma.UserCreateOrConnectWithoutDepartmentsInput[]
+  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutDepartmentsInput | Prisma.UserUpsertWithWhereUniqueWithoutDepartmentsInput[]
   set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
-  update?: Prisma.UserUpdateWithWhereUniqueWithoutDepartMentInput | Prisma.UserUpdateWithWhereUniqueWithoutDepartMentInput[]
-  updateMany?: Prisma.UserUpdateManyWithWhereWithoutDepartMentInput | Prisma.UserUpdateManyWithWhereWithoutDepartMentInput[]
+  update?: Prisma.UserUpdateWithWhereUniqueWithoutDepartmentsInput | Prisma.UserUpdateWithWhereUniqueWithoutDepartmentsInput[]
+  updateMany?: Prisma.UserUpdateManyWithWhereWithoutDepartmentsInput | Prisma.UserUpdateManyWithWhereWithoutDepartmentsInput[]
   deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
 }
 
-export type UserUncheckedUpdateManyWithoutDepartMentNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutDepartMentInput, Prisma.UserUncheckedCreateWithoutDepartMentInput> | Prisma.UserCreateWithoutDepartMentInput[] | Prisma.UserUncheckedCreateWithoutDepartMentInput[]
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDepartMentInput | Prisma.UserCreateOrConnectWithoutDepartMentInput[]
-  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutDepartMentInput | Prisma.UserUpsertWithWhereUniqueWithoutDepartMentInput[]
+export type UserUncheckedUpdateManyWithoutDepartmentsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutDepartmentsInput, Prisma.UserUncheckedCreateWithoutDepartmentsInput> | Prisma.UserCreateWithoutDepartmentsInput[] | Prisma.UserUncheckedCreateWithoutDepartmentsInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutDepartmentsInput | Prisma.UserCreateOrConnectWithoutDepartmentsInput[]
+  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutDepartmentsInput | Prisma.UserUpsertWithWhereUniqueWithoutDepartmentsInput[]
   set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
-  update?: Prisma.UserUpdateWithWhereUniqueWithoutDepartMentInput | Prisma.UserUpdateWithWhereUniqueWithoutDepartMentInput[]
-  updateMany?: Prisma.UserUpdateManyWithWhereWithoutDepartMentInput | Prisma.UserUpdateManyWithWhereWithoutDepartMentInput[]
+  update?: Prisma.UserUpdateWithWhereUniqueWithoutDepartmentsInput | Prisma.UserUpdateWithWhereUniqueWithoutDepartmentsInput[]
+  updateMany?: Prisma.UserUpdateManyWithWhereWithoutDepartmentsInput | Prisma.UserUpdateManyWithWhereWithoutDepartmentsInput[]
   deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
 }
 
-export type UserCreateNestedManyWithoutProjectInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutProjectInput, Prisma.UserUncheckedCreateWithoutProjectInput> | Prisma.UserCreateWithoutProjectInput[] | Prisma.UserUncheckedCreateWithoutProjectInput[]
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutProjectInput | Prisma.UserCreateOrConnectWithoutProjectInput[]
+export type UserCreateNestedManyWithoutProjectsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutProjectsInput, Prisma.UserUncheckedCreateWithoutProjectsInput> | Prisma.UserCreateWithoutProjectsInput[] | Prisma.UserUncheckedCreateWithoutProjectsInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutProjectsInput | Prisma.UserCreateOrConnectWithoutProjectsInput[]
   connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
 }
 
-export type UserUncheckedCreateNestedManyWithoutProjectInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutProjectInput, Prisma.UserUncheckedCreateWithoutProjectInput> | Prisma.UserCreateWithoutProjectInput[] | Prisma.UserUncheckedCreateWithoutProjectInput[]
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutProjectInput | Prisma.UserCreateOrConnectWithoutProjectInput[]
+export type UserUncheckedCreateNestedManyWithoutProjectsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutProjectsInput, Prisma.UserUncheckedCreateWithoutProjectsInput> | Prisma.UserCreateWithoutProjectsInput[] | Prisma.UserUncheckedCreateWithoutProjectsInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutProjectsInput | Prisma.UserCreateOrConnectWithoutProjectsInput[]
   connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
 }
 
-export type UserUpdateManyWithoutProjectNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutProjectInput, Prisma.UserUncheckedCreateWithoutProjectInput> | Prisma.UserCreateWithoutProjectInput[] | Prisma.UserUncheckedCreateWithoutProjectInput[]
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutProjectInput | Prisma.UserCreateOrConnectWithoutProjectInput[]
-  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutProjectInput | Prisma.UserUpsertWithWhereUniqueWithoutProjectInput[]
+export type UserUpdateManyWithoutProjectsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutProjectsInput, Prisma.UserUncheckedCreateWithoutProjectsInput> | Prisma.UserCreateWithoutProjectsInput[] | Prisma.UserUncheckedCreateWithoutProjectsInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutProjectsInput | Prisma.UserCreateOrConnectWithoutProjectsInput[]
+  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutProjectsInput | Prisma.UserUpsertWithWhereUniqueWithoutProjectsInput[]
   set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
-  update?: Prisma.UserUpdateWithWhereUniqueWithoutProjectInput | Prisma.UserUpdateWithWhereUniqueWithoutProjectInput[]
-  updateMany?: Prisma.UserUpdateManyWithWhereWithoutProjectInput | Prisma.UserUpdateManyWithWhereWithoutProjectInput[]
+  update?: Prisma.UserUpdateWithWhereUniqueWithoutProjectsInput | Prisma.UserUpdateWithWhereUniqueWithoutProjectsInput[]
+  updateMany?: Prisma.UserUpdateManyWithWhereWithoutProjectsInput | Prisma.UserUpdateManyWithWhereWithoutProjectsInput[]
   deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
 }
 
-export type UserUncheckedUpdateManyWithoutProjectNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutProjectInput, Prisma.UserUncheckedCreateWithoutProjectInput> | Prisma.UserCreateWithoutProjectInput[] | Prisma.UserUncheckedCreateWithoutProjectInput[]
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutProjectInput | Prisma.UserCreateOrConnectWithoutProjectInput[]
-  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutProjectInput | Prisma.UserUpsertWithWhereUniqueWithoutProjectInput[]
+export type UserUncheckedUpdateManyWithoutProjectsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutProjectsInput, Prisma.UserUncheckedCreateWithoutProjectsInput> | Prisma.UserCreateWithoutProjectsInput[] | Prisma.UserUncheckedCreateWithoutProjectsInput[]
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutProjectsInput | Prisma.UserCreateOrConnectWithoutProjectsInput[]
+  upsert?: Prisma.UserUpsertWithWhereUniqueWithoutProjectsInput | Prisma.UserUpsertWithWhereUniqueWithoutProjectsInput[]
   set?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   disconnect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   delete?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
   connect?: Prisma.UserWhereUniqueInput | Prisma.UserWhereUniqueInput[]
-  update?: Prisma.UserUpdateWithWhereUniqueWithoutProjectInput | Prisma.UserUpdateWithWhereUniqueWithoutProjectInput[]
-  updateMany?: Prisma.UserUpdateManyWithWhereWithoutProjectInput | Prisma.UserUpdateManyWithWhereWithoutProjectInput[]
+  update?: Prisma.UserUpdateWithWhereUniqueWithoutProjectsInput | Prisma.UserUpdateWithWhereUniqueWithoutProjectsInput[]
+  updateMany?: Prisma.UserUpdateManyWithWhereWithoutProjectsInput | Prisma.UserUpdateManyWithWhereWithoutProjectsInput[]
   deleteMany?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
 }
 
@@ -626,7 +718,7 @@ export type UserUncheckedUpdateManyWithoutTaskNestedInput = {
 }
 
 export type UserCreateWithoutUserInfoInput = {
-  id: string
+  id?: string
   name: string
   email: string
   emailVerified: boolean
@@ -635,15 +727,19 @@ export type UserCreateWithoutUserInfoInput = {
   phoneNumberVerified?: boolean | null
   createdAt: Date | string
   updatedAt: Date | string
+  role?: string | null
+  banned?: boolean | null
+  banReason?: string | null
+  banExpires?: Date | string | null
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  DepartMent?: Prisma.DepartMentCreateNestedManyWithoutUsersInput
-  Project?: Prisma.ProjectCreateNestedManyWithoutUsersInput
+  departments?: Prisma.DepartmentCreateNestedManyWithoutUsersInput
+  projects?: Prisma.ProjectCreateNestedManyWithoutUsersInput
   Task?: Prisma.TaskCreateNestedManyWithoutUsersInput
 }
 
 export type UserUncheckedCreateWithoutUserInfoInput = {
-  id: string
+  id?: string
   name: string
   email: string
   emailVerified: boolean
@@ -652,10 +748,14 @@ export type UserUncheckedCreateWithoutUserInfoInput = {
   phoneNumberVerified?: boolean | null
   createdAt: Date | string
   updatedAt: Date | string
+  role?: string | null
+  banned?: boolean | null
+  banReason?: string | null
+  banExpires?: Date | string | null
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  DepartMent?: Prisma.DepartMentUncheckedCreateNestedManyWithoutUsersInput
-  Project?: Prisma.ProjectUncheckedCreateNestedManyWithoutUsersInput
+  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUsersInput
+  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUsersInput
   Task?: Prisma.TaskUncheckedCreateNestedManyWithoutUsersInput
 }
 
@@ -685,10 +785,14 @@ export type UserUpdateWithoutUserInfoInput = {
   phoneNumberVerified?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  DepartMent?: Prisma.DepartMentUpdateManyWithoutUsersNestedInput
-  Project?: Prisma.ProjectUpdateManyWithoutUsersNestedInput
+  departments?: Prisma.DepartmentUpdateManyWithoutUsersNestedInput
+  projects?: Prisma.ProjectUpdateManyWithoutUsersNestedInput
   Task?: Prisma.TaskUpdateManyWithoutUsersNestedInput
 }
 
@@ -702,15 +806,19 @@ export type UserUncheckedUpdateWithoutUserInfoInput = {
   phoneNumberVerified?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  DepartMent?: Prisma.DepartMentUncheckedUpdateManyWithoutUsersNestedInput
-  Project?: Prisma.ProjectUncheckedUpdateManyWithoutUsersNestedInput
+  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutUsersNestedInput
+  projects?: Prisma.ProjectUncheckedUpdateManyWithoutUsersNestedInput
   Task?: Prisma.TaskUncheckedUpdateManyWithoutUsersNestedInput
 }
 
 export type UserCreateWithoutSessionsInput = {
-  id: string
+  id?: string
   name: string
   email: string
   emailVerified: boolean
@@ -719,15 +827,19 @@ export type UserCreateWithoutSessionsInput = {
   phoneNumberVerified?: boolean | null
   createdAt: Date | string
   updatedAt: Date | string
+  role?: string | null
+  banned?: boolean | null
+  banReason?: string | null
+  banExpires?: Date | string | null
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  UserInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
-  DepartMent?: Prisma.DepartMentCreateNestedManyWithoutUsersInput
-  Project?: Prisma.ProjectCreateNestedManyWithoutUsersInput
+  userInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
+  departments?: Prisma.DepartmentCreateNestedManyWithoutUsersInput
+  projects?: Prisma.ProjectCreateNestedManyWithoutUsersInput
   Task?: Prisma.TaskCreateNestedManyWithoutUsersInput
 }
 
 export type UserUncheckedCreateWithoutSessionsInput = {
-  id: string
+  id?: string
   name: string
   email: string
   emailVerified: boolean
@@ -736,10 +848,14 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   phoneNumberVerified?: boolean | null
   createdAt: Date | string
   updatedAt: Date | string
+  role?: string | null
+  banned?: boolean | null
+  banReason?: string | null
+  banExpires?: Date | string | null
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  UserInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
-  DepartMent?: Prisma.DepartMentUncheckedCreateNestedManyWithoutUsersInput
-  Project?: Prisma.ProjectUncheckedCreateNestedManyWithoutUsersInput
+  userInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
+  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUsersInput
+  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUsersInput
   Task?: Prisma.TaskUncheckedCreateNestedManyWithoutUsersInput
 }
 
@@ -769,10 +885,14 @@ export type UserUpdateWithoutSessionsInput = {
   phoneNumberVerified?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  UserInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
-  DepartMent?: Prisma.DepartMentUpdateManyWithoutUsersNestedInput
-  Project?: Prisma.ProjectUpdateManyWithoutUsersNestedInput
+  userInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
+  departments?: Prisma.DepartmentUpdateManyWithoutUsersNestedInput
+  projects?: Prisma.ProjectUpdateManyWithoutUsersNestedInput
   Task?: Prisma.TaskUpdateManyWithoutUsersNestedInput
 }
 
@@ -786,15 +906,19 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   phoneNumberVerified?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  UserInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
-  DepartMent?: Prisma.DepartMentUncheckedUpdateManyWithoutUsersNestedInput
-  Project?: Prisma.ProjectUncheckedUpdateManyWithoutUsersNestedInput
+  userInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
+  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutUsersNestedInput
+  projects?: Prisma.ProjectUncheckedUpdateManyWithoutUsersNestedInput
   Task?: Prisma.TaskUncheckedUpdateManyWithoutUsersNestedInput
 }
 
 export type UserCreateWithoutAccountsInput = {
-  id: string
+  id?: string
   name: string
   email: string
   emailVerified: boolean
@@ -803,15 +927,19 @@ export type UserCreateWithoutAccountsInput = {
   phoneNumberVerified?: boolean | null
   createdAt: Date | string
   updatedAt: Date | string
+  role?: string | null
+  banned?: boolean | null
+  banReason?: string | null
+  banExpires?: Date | string | null
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
-  UserInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
-  DepartMent?: Prisma.DepartMentCreateNestedManyWithoutUsersInput
-  Project?: Prisma.ProjectCreateNestedManyWithoutUsersInput
+  userInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
+  departments?: Prisma.DepartmentCreateNestedManyWithoutUsersInput
+  projects?: Prisma.ProjectCreateNestedManyWithoutUsersInput
   Task?: Prisma.TaskCreateNestedManyWithoutUsersInput
 }
 
 export type UserUncheckedCreateWithoutAccountsInput = {
-  id: string
+  id?: string
   name: string
   email: string
   emailVerified: boolean
@@ -820,10 +948,14 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   phoneNumberVerified?: boolean | null
   createdAt: Date | string
   updatedAt: Date | string
+  role?: string | null
+  banned?: boolean | null
+  banReason?: string | null
+  banExpires?: Date | string | null
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
-  UserInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
-  DepartMent?: Prisma.DepartMentUncheckedCreateNestedManyWithoutUsersInput
-  Project?: Prisma.ProjectUncheckedCreateNestedManyWithoutUsersInput
+  userInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
+  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUsersInput
+  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUsersInput
   Task?: Prisma.TaskUncheckedCreateNestedManyWithoutUsersInput
 }
 
@@ -853,10 +985,14 @@ export type UserUpdateWithoutAccountsInput = {
   phoneNumberVerified?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
-  UserInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
-  DepartMent?: Prisma.DepartMentUpdateManyWithoutUsersNestedInput
-  Project?: Prisma.ProjectUpdateManyWithoutUsersNestedInput
+  userInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
+  departments?: Prisma.DepartmentUpdateManyWithoutUsersNestedInput
+  projects?: Prisma.ProjectUpdateManyWithoutUsersNestedInput
   Task?: Prisma.TaskUpdateManyWithoutUsersNestedInput
 }
 
@@ -870,15 +1006,19 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   phoneNumberVerified?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
-  UserInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
-  DepartMent?: Prisma.DepartMentUncheckedUpdateManyWithoutUsersNestedInput
-  Project?: Prisma.ProjectUncheckedUpdateManyWithoutUsersNestedInput
+  userInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
+  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutUsersNestedInput
+  projects?: Prisma.ProjectUncheckedUpdateManyWithoutUsersNestedInput
   Task?: Prisma.TaskUncheckedUpdateManyWithoutUsersNestedInput
 }
 
-export type UserCreateWithoutDepartMentInput = {
-  id: string
+export type UserCreateWithoutDepartmentsInput = {
+  id?: string
   name: string
   email: string
   emailVerified: boolean
@@ -887,15 +1027,19 @@ export type UserCreateWithoutDepartMentInput = {
   phoneNumberVerified?: boolean | null
   createdAt: Date | string
   updatedAt: Date | string
+  role?: string | null
+  banned?: boolean | null
+  banReason?: string | null
+  banExpires?: Date | string | null
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  UserInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
-  Project?: Prisma.ProjectCreateNestedManyWithoutUsersInput
+  userInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
+  projects?: Prisma.ProjectCreateNestedManyWithoutUsersInput
   Task?: Prisma.TaskCreateNestedManyWithoutUsersInput
 }
 
-export type UserUncheckedCreateWithoutDepartMentInput = {
-  id: string
+export type UserUncheckedCreateWithoutDepartmentsInput = {
+  id?: string
   name: string
   email: string
   emailVerified: boolean
@@ -904,32 +1048,36 @@ export type UserUncheckedCreateWithoutDepartMentInput = {
   phoneNumberVerified?: boolean | null
   createdAt: Date | string
   updatedAt: Date | string
+  role?: string | null
+  banned?: boolean | null
+  banReason?: string | null
+  banExpires?: Date | string | null
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  UserInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
-  Project?: Prisma.ProjectUncheckedCreateNestedManyWithoutUsersInput
+  userInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
+  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUsersInput
   Task?: Prisma.TaskUncheckedCreateNestedManyWithoutUsersInput
 }
 
-export type UserCreateOrConnectWithoutDepartMentInput = {
+export type UserCreateOrConnectWithoutDepartmentsInput = {
   where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutDepartMentInput, Prisma.UserUncheckedCreateWithoutDepartMentInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutDepartmentsInput, Prisma.UserUncheckedCreateWithoutDepartmentsInput>
 }
 
-export type UserUpsertWithWhereUniqueWithoutDepartMentInput = {
+export type UserUpsertWithWhereUniqueWithoutDepartmentsInput = {
   where: Prisma.UserWhereUniqueInput
-  update: Prisma.XOR<Prisma.UserUpdateWithoutDepartMentInput, Prisma.UserUncheckedUpdateWithoutDepartMentInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutDepartMentInput, Prisma.UserUncheckedCreateWithoutDepartMentInput>
+  update: Prisma.XOR<Prisma.UserUpdateWithoutDepartmentsInput, Prisma.UserUncheckedUpdateWithoutDepartmentsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutDepartmentsInput, Prisma.UserUncheckedCreateWithoutDepartmentsInput>
 }
 
-export type UserUpdateWithWhereUniqueWithoutDepartMentInput = {
+export type UserUpdateWithWhereUniqueWithoutDepartmentsInput = {
   where: Prisma.UserWhereUniqueInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutDepartMentInput, Prisma.UserUncheckedUpdateWithoutDepartMentInput>
+  data: Prisma.XOR<Prisma.UserUpdateWithoutDepartmentsInput, Prisma.UserUncheckedUpdateWithoutDepartmentsInput>
 }
 
-export type UserUpdateManyWithWhereWithoutDepartMentInput = {
+export type UserUpdateManyWithWhereWithoutDepartmentsInput = {
   where: Prisma.UserScalarWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateManyMutationInput, Prisma.UserUncheckedUpdateManyWithoutDepartMentInput>
+  data: Prisma.XOR<Prisma.UserUpdateManyMutationInput, Prisma.UserUncheckedUpdateManyWithoutDepartmentsInput>
 }
 
 export type UserScalarWhereInput = {
@@ -945,10 +1093,14 @@ export type UserScalarWhereInput = {
   phoneNumberVerified?: Prisma.BoolNullableFilter<"User"> | boolean | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  role?: Prisma.StringNullableFilter<"User"> | string | null
+  banned?: Prisma.BoolNullableFilter<"User"> | boolean | null
+  banReason?: Prisma.StringNullableFilter<"User"> | string | null
+  banExpires?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
 }
 
-export type UserCreateWithoutProjectInput = {
-  id: string
+export type UserCreateWithoutProjectsInput = {
+  id?: string
   name: string
   email: string
   emailVerified: boolean
@@ -957,15 +1109,19 @@ export type UserCreateWithoutProjectInput = {
   phoneNumberVerified?: boolean | null
   createdAt: Date | string
   updatedAt: Date | string
+  role?: string | null
+  banned?: boolean | null
+  banReason?: string | null
+  banExpires?: Date | string | null
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  UserInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
-  DepartMent?: Prisma.DepartMentCreateNestedManyWithoutUsersInput
+  userInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
+  departments?: Prisma.DepartmentCreateNestedManyWithoutUsersInput
   Task?: Prisma.TaskCreateNestedManyWithoutUsersInput
 }
 
-export type UserUncheckedCreateWithoutProjectInput = {
-  id: string
+export type UserUncheckedCreateWithoutProjectsInput = {
+  id?: string
   name: string
   email: string
   emailVerified: boolean
@@ -974,36 +1130,40 @@ export type UserUncheckedCreateWithoutProjectInput = {
   phoneNumberVerified?: boolean | null
   createdAt: Date | string
   updatedAt: Date | string
+  role?: string | null
+  banned?: boolean | null
+  banReason?: string | null
+  banExpires?: Date | string | null
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  UserInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
-  DepartMent?: Prisma.DepartMentUncheckedCreateNestedManyWithoutUsersInput
+  userInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
+  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUsersInput
   Task?: Prisma.TaskUncheckedCreateNestedManyWithoutUsersInput
 }
 
-export type UserCreateOrConnectWithoutProjectInput = {
+export type UserCreateOrConnectWithoutProjectsInput = {
   where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutProjectInput, Prisma.UserUncheckedCreateWithoutProjectInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutProjectsInput, Prisma.UserUncheckedCreateWithoutProjectsInput>
 }
 
-export type UserUpsertWithWhereUniqueWithoutProjectInput = {
+export type UserUpsertWithWhereUniqueWithoutProjectsInput = {
   where: Prisma.UserWhereUniqueInput
-  update: Prisma.XOR<Prisma.UserUpdateWithoutProjectInput, Prisma.UserUncheckedUpdateWithoutProjectInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutProjectInput, Prisma.UserUncheckedCreateWithoutProjectInput>
+  update: Prisma.XOR<Prisma.UserUpdateWithoutProjectsInput, Prisma.UserUncheckedUpdateWithoutProjectsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutProjectsInput, Prisma.UserUncheckedCreateWithoutProjectsInput>
 }
 
-export type UserUpdateWithWhereUniqueWithoutProjectInput = {
+export type UserUpdateWithWhereUniqueWithoutProjectsInput = {
   where: Prisma.UserWhereUniqueInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutProjectInput, Prisma.UserUncheckedUpdateWithoutProjectInput>
+  data: Prisma.XOR<Prisma.UserUpdateWithoutProjectsInput, Prisma.UserUncheckedUpdateWithoutProjectsInput>
 }
 
-export type UserUpdateManyWithWhereWithoutProjectInput = {
+export type UserUpdateManyWithWhereWithoutProjectsInput = {
   where: Prisma.UserScalarWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateManyMutationInput, Prisma.UserUncheckedUpdateManyWithoutProjectInput>
+  data: Prisma.XOR<Prisma.UserUpdateManyMutationInput, Prisma.UserUncheckedUpdateManyWithoutProjectsInput>
 }
 
 export type UserCreateWithoutTaskInput = {
-  id: string
+  id?: string
   name: string
   email: string
   emailVerified: boolean
@@ -1012,15 +1172,19 @@ export type UserCreateWithoutTaskInput = {
   phoneNumberVerified?: boolean | null
   createdAt: Date | string
   updatedAt: Date | string
+  role?: string | null
+  banned?: boolean | null
+  banReason?: string | null
+  banExpires?: Date | string | null
   sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  UserInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
-  DepartMent?: Prisma.DepartMentCreateNestedManyWithoutUsersInput
-  Project?: Prisma.ProjectCreateNestedManyWithoutUsersInput
+  userInfo?: Prisma.UserInfoCreateNestedOneWithoutUserInput
+  departments?: Prisma.DepartmentCreateNestedManyWithoutUsersInput
+  projects?: Prisma.ProjectCreateNestedManyWithoutUsersInput
 }
 
 export type UserUncheckedCreateWithoutTaskInput = {
-  id: string
+  id?: string
   name: string
   email: string
   emailVerified: boolean
@@ -1029,11 +1193,15 @@ export type UserUncheckedCreateWithoutTaskInput = {
   phoneNumberVerified?: boolean | null
   createdAt: Date | string
   updatedAt: Date | string
+  role?: string | null
+  banned?: boolean | null
+  banReason?: string | null
+  banExpires?: Date | string | null
   sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  UserInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
-  DepartMent?: Prisma.DepartMentUncheckedCreateNestedManyWithoutUsersInput
-  Project?: Prisma.ProjectUncheckedCreateNestedManyWithoutUsersInput
+  userInfo?: Prisma.UserInfoUncheckedCreateNestedOneWithoutUserInput
+  departments?: Prisma.DepartmentUncheckedCreateNestedManyWithoutUsersInput
+  projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutUsersInput
 }
 
 export type UserCreateOrConnectWithoutTaskInput = {
@@ -1057,7 +1225,7 @@ export type UserUpdateManyWithWhereWithoutTaskInput = {
   data: Prisma.XOR<Prisma.UserUpdateManyMutationInput, Prisma.UserUncheckedUpdateManyWithoutTaskInput>
 }
 
-export type UserUpdateWithoutDepartMentInput = {
+export type UserUpdateWithoutDepartmentsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1067,14 +1235,18 @@ export type UserUpdateWithoutDepartMentInput = {
   phoneNumberVerified?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  UserInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
-  Project?: Prisma.ProjectUpdateManyWithoutUsersNestedInput
+  userInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
+  projects?: Prisma.ProjectUpdateManyWithoutUsersNestedInput
   Task?: Prisma.TaskUpdateManyWithoutUsersNestedInput
 }
 
-export type UserUncheckedUpdateWithoutDepartMentInput = {
+export type UserUncheckedUpdateWithoutDepartmentsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1084,14 +1256,18 @@ export type UserUncheckedUpdateWithoutDepartMentInput = {
   phoneNumberVerified?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  UserInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
-  Project?: Prisma.ProjectUncheckedUpdateManyWithoutUsersNestedInput
+  userInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
+  projects?: Prisma.ProjectUncheckedUpdateManyWithoutUsersNestedInput
   Task?: Prisma.TaskUncheckedUpdateManyWithoutUsersNestedInput
 }
 
-export type UserUncheckedUpdateManyWithoutDepartMentInput = {
+export type UserUncheckedUpdateManyWithoutDepartmentsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1101,9 +1277,13 @@ export type UserUncheckedUpdateManyWithoutDepartMentInput = {
   phoneNumberVerified?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
-export type UserUpdateWithoutProjectInput = {
+export type UserUpdateWithoutProjectsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1113,14 +1293,18 @@ export type UserUpdateWithoutProjectInput = {
   phoneNumberVerified?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  UserInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
-  DepartMent?: Prisma.DepartMentUpdateManyWithoutUsersNestedInput
+  userInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
+  departments?: Prisma.DepartmentUpdateManyWithoutUsersNestedInput
   Task?: Prisma.TaskUpdateManyWithoutUsersNestedInput
 }
 
-export type UserUncheckedUpdateWithoutProjectInput = {
+export type UserUncheckedUpdateWithoutProjectsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1130,14 +1314,18 @@ export type UserUncheckedUpdateWithoutProjectInput = {
   phoneNumberVerified?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  UserInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
-  DepartMent?: Prisma.DepartMentUncheckedUpdateManyWithoutUsersNestedInput
+  userInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
+  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutUsersNestedInput
   Task?: Prisma.TaskUncheckedUpdateManyWithoutUsersNestedInput
 }
 
-export type UserUncheckedUpdateManyWithoutProjectInput = {
+export type UserUncheckedUpdateManyWithoutProjectsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1147,6 +1335,10 @@ export type UserUncheckedUpdateManyWithoutProjectInput = {
   phoneNumberVerified?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type UserUpdateWithoutTaskInput = {
@@ -1159,11 +1351,15 @@ export type UserUpdateWithoutTaskInput = {
   phoneNumberVerified?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  UserInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
-  DepartMent?: Prisma.DepartMentUpdateManyWithoutUsersNestedInput
-  Project?: Prisma.ProjectUpdateManyWithoutUsersNestedInput
+  userInfo?: Prisma.UserInfoUpdateOneWithoutUserNestedInput
+  departments?: Prisma.DepartmentUpdateManyWithoutUsersNestedInput
+  projects?: Prisma.ProjectUpdateManyWithoutUsersNestedInput
 }
 
 export type UserUncheckedUpdateWithoutTaskInput = {
@@ -1176,11 +1372,15 @@ export type UserUncheckedUpdateWithoutTaskInput = {
   phoneNumberVerified?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  UserInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
-  DepartMent?: Prisma.DepartMentUncheckedUpdateManyWithoutUsersNestedInput
-  Project?: Prisma.ProjectUncheckedUpdateManyWithoutUsersNestedInput
+  userInfo?: Prisma.UserInfoUncheckedUpdateOneWithoutUserNestedInput
+  departments?: Prisma.DepartmentUncheckedUpdateManyWithoutUsersNestedInput
+  projects?: Prisma.ProjectUncheckedUpdateManyWithoutUsersNestedInput
 }
 
 export type UserUncheckedUpdateManyWithoutTaskInput = {
@@ -1193,6 +1393,10 @@ export type UserUncheckedUpdateManyWithoutTaskInput = {
   phoneNumberVerified?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  role?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banned?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  banReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  banExpires?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 
@@ -1203,16 +1407,16 @@ export type UserUncheckedUpdateManyWithoutTaskInput = {
 export type UserCountOutputType = {
   sessions: number
   accounts: number
-  DepartMent: number
-  Project: number
+  departments: number
+  projects: number
   Task: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   sessions?: boolean | UserCountOutputTypeCountSessionsArgs
   accounts?: boolean | UserCountOutputTypeCountAccountsArgs
-  DepartMent?: boolean | UserCountOutputTypeCountDepartMentArgs
-  Project?: boolean | UserCountOutputTypeCountProjectArgs
+  departments?: boolean | UserCountOutputTypeCountDepartmentsArgs
+  projects?: boolean | UserCountOutputTypeCountProjectsArgs
   Task?: boolean | UserCountOutputTypeCountTaskArgs
 }
 
@@ -1243,14 +1447,14 @@ export type UserCountOutputTypeCountAccountsArgs<ExtArgs extends runtime.Types.E
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountDepartMentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.DepartMentWhereInput
+export type UserCountOutputTypeCountDepartmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.DepartmentWhereInput
 }
 
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountProjectArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type UserCountOutputTypeCountProjectsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.ProjectWhereInput
 }
 
@@ -1272,11 +1476,15 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   phoneNumberVerified?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  role?: boolean
+  banned?: boolean
+  banReason?: boolean
+  banExpires?: boolean
   sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
   accounts?: boolean | Prisma.User$accountsArgs<ExtArgs>
-  UserInfo?: boolean | Prisma.User$UserInfoArgs<ExtArgs>
-  DepartMent?: boolean | Prisma.User$DepartMentArgs<ExtArgs>
-  Project?: boolean | Prisma.User$ProjectArgs<ExtArgs>
+  userInfo?: boolean | Prisma.User$userInfoArgs<ExtArgs>
+  departments?: boolean | Prisma.User$departmentsArgs<ExtArgs>
+  projects?: boolean | Prisma.User$projectsArgs<ExtArgs>
   Task?: boolean | Prisma.User$TaskArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
@@ -1291,6 +1499,10 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   phoneNumberVerified?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  role?: boolean
+  banned?: boolean
+  banReason?: boolean
+  banExpires?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1303,6 +1515,10 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   phoneNumberVerified?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  role?: boolean
+  banned?: boolean
+  banReason?: boolean
+  banExpires?: boolean
 }, ExtArgs["result"]["user"]>
 
 export type UserSelectScalar = {
@@ -1315,15 +1531,19 @@ export type UserSelectScalar = {
   phoneNumberVerified?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  role?: boolean
+  banned?: boolean
+  banReason?: boolean
+  banExpires?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "image" | "phoneNumber" | "phoneNumberVerified" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "image" | "phoneNumber" | "phoneNumberVerified" | "createdAt" | "updatedAt" | "role" | "banned" | "banReason" | "banExpires", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   sessions?: boolean | Prisma.User$sessionsArgs<ExtArgs>
   accounts?: boolean | Prisma.User$accountsArgs<ExtArgs>
-  UserInfo?: boolean | Prisma.User$UserInfoArgs<ExtArgs>
-  DepartMent?: boolean | Prisma.User$DepartMentArgs<ExtArgs>
-  Project?: boolean | Prisma.User$ProjectArgs<ExtArgs>
+  userInfo?: boolean | Prisma.User$userInfoArgs<ExtArgs>
+  departments?: boolean | Prisma.User$departmentsArgs<ExtArgs>
+  projects?: boolean | Prisma.User$projectsArgs<ExtArgs>
   Task?: boolean | Prisma.User$TaskArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
@@ -1335,9 +1555,9 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   objects: {
     sessions: Prisma.$SessionPayload<ExtArgs>[]
     accounts: Prisma.$AccountPayload<ExtArgs>[]
-    UserInfo: Prisma.$UserInfoPayload<ExtArgs> | null
-    DepartMent: Prisma.$DepartMentPayload<ExtArgs>[]
-    Project: Prisma.$ProjectPayload<ExtArgs>[]
+    userInfo: Prisma.$UserInfoPayload<ExtArgs> | null
+    departments: Prisma.$DepartmentPayload<ExtArgs>[]
+    projects: Prisma.$ProjectPayload<ExtArgs>[]
     Task: Prisma.$TaskPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1350,6 +1570,10 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     phoneNumberVerified: boolean | null
     createdAt: Date
     updatedAt: Date
+    role: string | null
+    banned: boolean | null
+    banReason: string | null
+    banExpires: Date | null
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -1746,9 +1970,9 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   readonly [Symbol.toStringTag]: "PrismaPromise"
   sessions<T extends Prisma.User$sessionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   accounts<T extends Prisma.User$accountsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  UserInfo<T extends Prisma.User$UserInfoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$UserInfoArgs<ExtArgs>>): Prisma.Prisma__UserInfoClient<runtime.Types.Result.GetResult<Prisma.$UserInfoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  DepartMent<T extends Prisma.User$DepartMentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$DepartMentArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DepartMentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  Project<T extends Prisma.User$ProjectArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$ProjectArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  userInfo<T extends Prisma.User$userInfoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$userInfoArgs<ExtArgs>>): Prisma.Prisma__UserInfoClient<runtime.Types.Result.GetResult<Prisma.$UserInfoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  departments<T extends Prisma.User$departmentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$departmentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  projects<T extends Prisma.User$projectsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$projectsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   Task<T extends Prisma.User$TaskArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$TaskArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TaskPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1788,6 +2012,10 @@ export interface UserFieldRefs {
   readonly phoneNumberVerified: Prisma.FieldRef<"User", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
+  readonly role: Prisma.FieldRef<"User", 'String'>
+  readonly banned: Prisma.FieldRef<"User", 'Boolean'>
+  readonly banReason: Prisma.FieldRef<"User", 'String'>
+  readonly banExpires: Prisma.FieldRef<"User", 'DateTime'>
 }
     
 
@@ -2224,9 +2452,9 @@ export type User$accountsArgs<ExtArgs extends runtime.Types.Extensions.InternalA
 }
 
 /**
- * User.UserInfo
+ * User.userInfo
  */
-export type User$UserInfoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$userInfoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the UserInfo
    */
@@ -2243,33 +2471,33 @@ export type User$UserInfoArgs<ExtArgs extends runtime.Types.Extensions.InternalA
 }
 
 /**
- * User.DepartMent
+ * User.departments
  */
-export type User$DepartMentArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$departmentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the DepartMent
+   * Select specific fields to fetch from the Department
    */
-  select?: Prisma.DepartMentSelect<ExtArgs> | null
+  select?: Prisma.DepartmentSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the DepartMent
+   * Omit specific fields from the Department
    */
-  omit?: Prisma.DepartMentOmit<ExtArgs> | null
+  omit?: Prisma.DepartmentOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.DepartMentInclude<ExtArgs> | null
-  where?: Prisma.DepartMentWhereInput
-  orderBy?: Prisma.DepartMentOrderByWithRelationInput | Prisma.DepartMentOrderByWithRelationInput[]
-  cursor?: Prisma.DepartMentWhereUniqueInput
+  include?: Prisma.DepartmentInclude<ExtArgs> | null
+  where?: Prisma.DepartmentWhereInput
+  orderBy?: Prisma.DepartmentOrderByWithRelationInput | Prisma.DepartmentOrderByWithRelationInput[]
+  cursor?: Prisma.DepartmentWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.DepartMentScalarFieldEnum | Prisma.DepartMentScalarFieldEnum[]
+  distinct?: Prisma.DepartmentScalarFieldEnum | Prisma.DepartmentScalarFieldEnum[]
 }
 
 /**
- * User.Project
+ * User.projects
  */
-export type User$ProjectArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$projectsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the Project
    */

@@ -400,7 +400,7 @@ export const ModelName = {
   Session: 'Session',
   Account: 'Account',
   Verification: 'Verification',
-  DepartMent: 'DepartMent',
+  Department: 'Department',
   Project: 'Project',
   ProjectGroup: 'ProjectGroup',
   Task: 'Task'
@@ -419,7 +419,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "userInfo" | "bankDetails" | "session" | "account" | "verification" | "departMent" | "project" | "projectGroup" | "task"
+    modelProps: "user" | "userInfo" | "bankDetails" | "session" | "account" | "verification" | "department" | "project" | "projectGroup" | "task"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -867,77 +867,77 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    DepartMent: {
-      payload: Prisma.$DepartMentPayload<ExtArgs>
-      fields: Prisma.DepartMentFieldRefs
+    Department: {
+      payload: Prisma.$DepartmentPayload<ExtArgs>
+      fields: Prisma.DepartmentFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.DepartMentFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DepartMentPayload> | null
+          args: Prisma.DepartmentFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DepartmentPayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.DepartMentFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DepartMentPayload>
+          args: Prisma.DepartmentFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DepartmentPayload>
         }
         findFirst: {
-          args: Prisma.DepartMentFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DepartMentPayload> | null
+          args: Prisma.DepartmentFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DepartmentPayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.DepartMentFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DepartMentPayload>
+          args: Prisma.DepartmentFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DepartmentPayload>
         }
         findMany: {
-          args: Prisma.DepartMentFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DepartMentPayload>[]
+          args: Prisma.DepartmentFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DepartmentPayload>[]
         }
         create: {
-          args: Prisma.DepartMentCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DepartMentPayload>
+          args: Prisma.DepartmentCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DepartmentPayload>
         }
         createMany: {
-          args: Prisma.DepartMentCreateManyArgs<ExtArgs>
+          args: Prisma.DepartmentCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         createManyAndReturn: {
-          args: Prisma.DepartMentCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DepartMentPayload>[]
+          args: Prisma.DepartmentCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DepartmentPayload>[]
         }
         delete: {
-          args: Prisma.DepartMentDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DepartMentPayload>
+          args: Prisma.DepartmentDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DepartmentPayload>
         }
         update: {
-          args: Prisma.DepartMentUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DepartMentPayload>
+          args: Prisma.DepartmentUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DepartmentPayload>
         }
         deleteMany: {
-          args: Prisma.DepartMentDeleteManyArgs<ExtArgs>
+          args: Prisma.DepartmentDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.DepartMentUpdateManyArgs<ExtArgs>
+          args: Prisma.DepartmentUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateManyAndReturn: {
-          args: Prisma.DepartMentUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DepartMentPayload>[]
+          args: Prisma.DepartmentUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DepartmentPayload>[]
         }
         upsert: {
-          args: Prisma.DepartMentUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$DepartMentPayload>
+          args: Prisma.DepartmentUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DepartmentPayload>
         }
         aggregate: {
-          args: Prisma.DepartMentAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateDepartMent>
+          args: Prisma.DepartmentAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateDepartment>
         }
         groupBy: {
-          args: Prisma.DepartMentGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.DepartMentGroupByOutputType>[]
+          args: Prisma.DepartmentGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DepartmentGroupByOutputType>[]
         }
         count: {
-          args: Prisma.DepartMentCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.DepartMentCountAggregateOutputType> | number
+          args: Prisma.DepartmentCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DepartmentCountAggregateOutputType> | number
         }
       }
     }
@@ -1211,7 +1211,11 @@ export const UserScalarFieldEnum = {
   phoneNumber: 'phoneNumber',
   phoneNumberVerified: 'phoneNumberVerified',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  role: 'role',
+  banned: 'banned',
+  banReason: 'banReason',
+  banExpires: 'banExpires'
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -1249,7 +1253,8 @@ export const SessionScalarFieldEnum = {
   updatedAt: 'updatedAt',
   ipAddress: 'ipAddress',
   userAgent: 'userAgent',
-  userId: 'userId'
+  userId: 'userId',
+  impersonatedBy: 'impersonatedBy'
 } as const
 
 export type SessionScalarFieldEnum = (typeof SessionScalarFieldEnum)[keyof typeof SessionScalarFieldEnum]
@@ -1286,14 +1291,14 @@ export const VerificationScalarFieldEnum = {
 export type VerificationScalarFieldEnum = (typeof VerificationScalarFieldEnum)[keyof typeof VerificationScalarFieldEnum]
 
 
-export const DepartMentScalarFieldEnum = {
+export const DepartmentScalarFieldEnum = {
   id: 'id',
   name: 'name',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
-export type DepartMentScalarFieldEnum = (typeof DepartMentScalarFieldEnum)[keyof typeof DepartMentScalarFieldEnum]
+export type DepartmentScalarFieldEnum = (typeof DepartmentScalarFieldEnum)[keyof typeof DepartmentScalarFieldEnum]
 
 
 export const ProjectScalarFieldEnum = {
@@ -1325,7 +1330,8 @@ export const TaskScalarFieldEnum = {
   dueDate: 'dueDate',
   startDate: 'startDate',
   projectGroupId: 'projectGroupId',
-  completed: 'completed'
+  completed: 'completed',
+  projectId: 'projectId'
 } as const
 
 export type TaskScalarFieldEnum = (typeof TaskScalarFieldEnum)[keyof typeof TaskScalarFieldEnum]
@@ -1490,7 +1496,7 @@ export type GlobalOmitConfig = {
   session?: Prisma.SessionOmit
   account?: Prisma.AccountOmit
   verification?: Prisma.VerificationOmit
-  departMent?: Prisma.DepartMentOmit
+  department?: Prisma.DepartmentOmit
   project?: Prisma.ProjectOmit
   projectGroup?: Prisma.ProjectGroupOmit
   task?: Prisma.TaskOmit

@@ -219,7 +219,7 @@ export type ProjectGroupScalarWhereWithAggregatesInput = {
 }
 
 export type ProjectGroupCreateInput = {
-  id: string
+  id?: string
   name: string
   description: string
   Project: Prisma.ProjectCreateNestedOneWithoutGroupsInput
@@ -227,7 +227,7 @@ export type ProjectGroupCreateInput = {
 }
 
 export type ProjectGroupUncheckedCreateInput = {
-  id: string
+  id?: string
   name: string
   description: string
   projectId: string
@@ -251,7 +251,7 @@ export type ProjectGroupUncheckedUpdateInput = {
 }
 
 export type ProjectGroupCreateManyInput = {
-  id: string
+  id?: string
   name: string
   description: string
   projectId: string
@@ -365,14 +365,14 @@ export type ProjectGroupUpdateOneWithoutTasksNestedInput = {
 }
 
 export type ProjectGroupCreateWithoutProjectInput = {
-  id: string
+  id?: string
   name: string
   description: string
   tasks?: Prisma.TaskCreateNestedManyWithoutProjectGroupInput
 }
 
 export type ProjectGroupUncheckedCreateWithoutProjectInput = {
-  id: string
+  id?: string
   name: string
   description: string
   tasks?: Prisma.TaskUncheckedCreateNestedManyWithoutProjectGroupInput
@@ -415,14 +415,14 @@ export type ProjectGroupScalarWhereInput = {
 }
 
 export type ProjectGroupCreateWithoutTasksInput = {
-  id: string
+  id?: string
   name: string
   description: string
   Project: Prisma.ProjectCreateNestedOneWithoutGroupsInput
 }
 
 export type ProjectGroupUncheckedCreateWithoutTasksInput = {
-  id: string
+  id?: string
   name: string
   description: string
   projectId: string
@@ -459,7 +459,7 @@ export type ProjectGroupUncheckedUpdateWithoutTasksInput = {
 }
 
 export type ProjectGroupCreateManyProjectInput = {
-  id: string
+  id?: string
   name: string
   description: string
 }

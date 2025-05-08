@@ -1,9 +1,9 @@
 import { betterAuth } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
+import { admin } from "better-auth/plugins";
 
-import prisma from "./prisma";
-import { phoneNumberClient } from "better-auth/client/plugins";
 import { phoneNumber } from "better-auth/plugins/phone-number";
+import prisma from "./prisma";
 
 export const auth = betterAuth({
   database: prismaAdapter(prisma, {
@@ -12,21 +12,16 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
-  user: {
-    additionalFields: {
-      role: {
-        type: "string",
-        required: false,
-        defaultValue: "user",
-        input: false, // don't allow user to set role
+
+  plugins: [
+    admin({
+      defaultRole: "user",
+      adminRoles: ["admin", "superadmin"],
+    }),
+    phoneNumber({
+      sendOTP: ({ phoneNumber, code }, request) => {
+        console.table({ phoneNumber, code });
       },
-    },
-    plugins: [
-      phoneNumber({
-        sendOTP: ({ phoneNumber, code }, request) => {
-          console.table({ phoneNumber, code });
-        },
-      }),
-    ],
-  },
+    }),
+  ],
 });

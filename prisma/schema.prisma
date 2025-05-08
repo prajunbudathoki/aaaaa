@@ -15,7 +15,7 @@ datasource db {
 }
 
 model User {
-  id                  String       @id
+  id                  String       @id @default(uuid())
   name                String
   email               String
   emailVerified       Boolean
@@ -26,10 +26,15 @@ model User {
   updatedAt           DateTime
   sessions            Session[]
   accounts            Account[]
-  UserInfo            UserInfo?
-  DepartMent          DepartMent[]
-  Project             Project[]
+  userInfo            UserInfo?
+  departments         Department[]
+  projects            Project[]
   Task                Task[]
+
+  role       String?
+  banned     Boolean?
+  banReason  String?
+  banExpires DateTime?
 
   @@unique([email])
   @@unique([phoneNumber])
@@ -37,7 +42,7 @@ model User {
 }
 
 model UserInfo {
-  id                String        @id
+  id                String        @id @default(uuid())
   dateOfBirh        DateTime
   nationality       String
   citizenshipNumber String
@@ -51,7 +56,7 @@ model UserInfo {
 }
 
 model BankDetails {
-  id            String   @id
+  id            String   @id @default(uuid())
   bankName      String
   accountNumber String
   branch        String
@@ -63,22 +68,23 @@ model BankDetails {
 }
 
 model Session {
-  id        String   @id
-  expiresAt DateTime
-  token     String
-  createdAt DateTime
-  updatedAt DateTime
-  ipAddress String?
-  userAgent String?
-  userId    String
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id             String   @id @default(uuid())
+  expiresAt      DateTime
+  token          String
+  createdAt      DateTime
+  updatedAt      DateTime
+  ipAddress      String?
+  userAgent      String?
+  userId         String
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  impersonatedBy String?
 
   @@unique([token])
   @@map("session")
 }
 
 model Account {
-  id                    String    @id
+  id                    String    @id @default(uuid())
   accountId             String
   providerId            String
   userId                String
@@ -97,7 +103,7 @@ model Account {
 }
 
 model Verification {
-  id         String    @id
+  id         String    @id @default(uuid())
   identifier String
   value      String
   expiresAt  DateTime
@@ -107,8 +113,8 @@ model Verification {
   @@map("verification")
 }
 
-model DepartMent {
-  id        String   @id
+model Department {
+  id        String   @id @default(uuid())
   name      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -118,7 +124,7 @@ model DepartMent {
 }
 
 model Project {
-  id          String         @id
+  id          String         @id @default(uuid())
   name        String
   description String
   image       String?
@@ -126,12 +132,13 @@ model Project {
   updatedAt   DateTime       @updatedAt
   users       User[]
   groups      ProjectGroup[]
+  Task        Task[]
 
   @@map("project")
 }
 
 model ProjectGroup {
-  id          String  @id
+  id          String  @id @default(uuid())
   name        String
   description String
   Project     Project @relation(fields: [projectId], references: [id])
@@ -140,7 +147,7 @@ model ProjectGroup {
 }
 
 model Task {
-  id             String        @id
+  id             String        @id @default(uuid())
   title          String
   description    String
   dueDate        DateTime?
@@ -149,4 +156,6 @@ model Task {
   projectGroupId String?
   completed      Boolean       @default(false)
   users          User[]
+  Project        Project       @relation(fields: [projectId], references: [id])
+  projectId      String
 }

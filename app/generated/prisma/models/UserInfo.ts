@@ -243,7 +243,7 @@ export type UserInfoScalarWhereWithAggregatesInput = {
 }
 
 export type UserInfoCreateInput = {
-  id: string
+  id?: string
   dateOfBirh: Date | string
   nationality: string
   citizenshipNumber: string
@@ -253,7 +253,7 @@ export type UserInfoCreateInput = {
 }
 
 export type UserInfoUncheckedCreateInput = {
-  id: string
+  id?: string
   dateOfBirh: Date | string
   nationality: string
   citizenshipNumber: string
@@ -283,7 +283,7 @@ export type UserInfoUncheckedUpdateInput = {
 }
 
 export type UserInfoCreateManyInput = {
-  id: string
+  id?: string
   dateOfBirh: Date | string
   nationality: string
   citizenshipNumber: string
@@ -392,7 +392,7 @@ export type UserInfoUpdateOneRequiredWithoutBankDetailsNestedInput = {
 }
 
 export type UserInfoCreateWithoutUserInput = {
-  id: string
+  id?: string
   dateOfBirh: Date | string
   nationality: string
   citizenshipNumber: string
@@ -401,7 +401,7 @@ export type UserInfoCreateWithoutUserInput = {
 }
 
 export type UserInfoUncheckedCreateWithoutUserInput = {
-  id: string
+  id?: string
   dateOfBirh: Date | string
   nationality: string
   citizenshipNumber: string
@@ -444,7 +444,7 @@ export type UserInfoUncheckedUpdateWithoutUserInput = {
 }
 
 export type UserInfoCreateWithoutBankDetailsInput = {
-  id: string
+  id?: string
   dateOfBirh: Date | string
   nationality: string
   citizenshipNumber: string
@@ -453,7 +453,7 @@ export type UserInfoCreateWithoutBankDetailsInput = {
 }
 
 export type UserInfoUncheckedCreateWithoutBankDetailsInput = {
-  id: string
+  id?: string
   dateOfBirh: Date | string
   nationality: string
   citizenshipNumber: string

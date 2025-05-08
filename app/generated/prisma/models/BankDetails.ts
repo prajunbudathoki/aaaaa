@@ -240,7 +240,7 @@ export type BankDetailsScalarWhereWithAggregatesInput = {
 }
 
 export type BankDetailsCreateInput = {
-  id: string
+  id?: string
   bankName: string
   accountNumber: string
   branch: string
@@ -249,7 +249,7 @@ export type BankDetailsCreateInput = {
 }
 
 export type BankDetailsUncheckedCreateInput = {
-  id: string
+  id?: string
   bankName: string
   accountNumber: string
   branch: string
@@ -276,7 +276,7 @@ export type BankDetailsUncheckedUpdateInput = {
 }
 
 export type BankDetailsCreateManyInput = {
-  id: string
+  id?: string
   bankName: string
   accountNumber: string
   branch: string
@@ -381,7 +381,7 @@ export type BankDetailsUncheckedUpdateManyWithoutUserInfoNestedInput = {
 }
 
 export type BankDetailsCreateWithoutUserInfoInput = {
-  id: string
+  id?: string
   bankName: string
   accountNumber: string
   branch: string
@@ -389,7 +389,7 @@ export type BankDetailsCreateWithoutUserInfoInput = {
 }
 
 export type BankDetailsUncheckedCreateWithoutUserInfoInput = {
-  id: string
+  id?: string
   bankName: string
   accountNumber: string
   branch: string
@@ -435,7 +435,7 @@ export type BankDetailsScalarWhereInput = {
 }
 
 export type BankDetailsCreateManyUserInfoInput = {
-  id: string
+  id?: string
   bankName: string
   accountNumber: string
   branch: string

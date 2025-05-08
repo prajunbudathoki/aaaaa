@@ -72,10 +72,10 @@ export type Account = Prisma.AccountModel
  */
 export type Verification = Prisma.VerificationModel
 /**
- * Model DepartMent
+ * Model Department
  * 
  */
-export type DepartMent = Prisma.DepartMentModel
+export type Department = Prisma.DepartmentModel
 /**
  * Model Project
  * 
