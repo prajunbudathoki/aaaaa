@@ -1,0 +1,24 @@
+services:
+  postgres:
+    container_name: db
+    image: postgres:latest
+    volumes:
+      - ./db_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=pass123
+    ports:
+      - 5432:5432
+    restart: always
+  adminer:
+    image: adminer:latest
+    ports:
+      - 9999:8080
+    restart: always
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - 1025:1025
+      - 8025:8025
+    restart: always
+    
