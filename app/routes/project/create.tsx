@@ -19,6 +19,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Eye, Trash } from "lucide-react";
+import { Sidebar } from "@/components/sidebar/Sidebar";
 
 export const Route = createFileRoute('/project/create')({
   component: RouteComponent,
@@ -32,7 +33,9 @@ function RouteComponent() {
     const router = useRouter();
     const projects = Route.useLoaderData();
   return (
-    <div className="space-y-4 my-4 container mx-auto">
+    <div className="flex">
+    <Sidebar />
+    <div className="space-y-4 mt-15 my-4 container mx-auto">
     <div className="container mx-auto space-y-2">
       {error && (
         <Alert variant={"destructive"}>
@@ -110,6 +113,7 @@ function RouteComponent() {
         );
       })}
     </div>
+  </div>
   </div>
   )
 }
