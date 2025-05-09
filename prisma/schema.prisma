@@ -141,7 +141,7 @@ model ProjectGroup {
   id          String  @id @default(uuid())
   name        String
   description String
-  Project     Project @relation(fields: [projectId], references: [id])
+  Project     Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
   projectId   String
   tasks       Task[]
 }
@@ -152,10 +152,10 @@ model Task {
   description    String
   dueDate        DateTime?
   startDate      DateTime?
-  ProjectGroup   ProjectGroup? @relation(fields: [projectGroupId], references: [id])
+  ProjectGroup   ProjectGroup? @relation(fields: [projectGroupId], references: [id], onDelete: SetNull)
   projectGroupId String?
   completed      Boolean       @default(false)
   users          User[]
-  Project        Project       @relation(fields: [projectId], references: [id])
+  Project        Project       @relation(fields: [projectId], references: [id], onDelete: Cascade)
   projectId      String
 }

@@ -9,6 +9,10 @@ CREATE TABLE "user" (
     "phoneNumberVerified" BOOLEAN,
     "createdAt" TIMESTAMP(3) NOT NULL,
     "updatedAt" TIMESTAMP(3) NOT NULL,
+    "role" TEXT,
+    "banned" BOOLEAN,
+    "banReason" TEXT,
+    "banExpires" TIMESTAMP(3),
 
     CONSTRAINT "user_pkey" PRIMARY KEY ("id")
 );
@@ -47,6 +51,7 @@ CREATE TABLE "session" (
     "ipAddress" TEXT,
     "userAgent" TEXT,
     "userId" TEXT NOT NULL,
+    "impersonatedBy" TEXT,
 
     CONSTRAINT "session_pkey" PRIMARY KEY ("id")
 );
@@ -123,16 +128,17 @@ CREATE TABLE "Task" (
     "startDate" TIMESTAMP(3),
     "projectGroupId" TEXT,
     "completed" BOOLEAN NOT NULL DEFAULT false,
+    "projectId" TEXT NOT NULL,
 
     CONSTRAINT "Task_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "_DepartMentToUser" (
+CREATE TABLE "_DepartmentToUser" (
     "A" TEXT NOT NULL,
     "B" TEXT NOT NULL,
 
-    CONSTRAINT "_DepartMentToUser_AB_pkey" PRIMARY KEY ("A","B")
+    CONSTRAINT "_DepartmentToUser_AB_pkey" PRIMARY KEY ("A","B")
 );
 
 -- CreateTable
@@ -164,7 +170,7 @@ CREATE UNIQUE INDEX "user_info_userId_key" ON "user_info"("userId");
 CREATE UNIQUE INDEX "session_token_key" ON "session"("token");
 
 -- CreateIndex
-CREATE INDEX "_DepartMentToUser_B_index" ON "_DepartMentToUser"("B");
+CREATE INDEX "_DepartmentToUser_B_index" ON "_DepartmentToUser"("B");
 
 -- CreateIndex
 CREATE INDEX "_ProjectToUser_B_index" ON "_ProjectToUser"("B");
@@ -191,10 +197,13 @@ ALTER TABLE "ProjectGroup" ADD CONSTRAINT "ProjectGroup_projectId_fkey" FOREIGN 
 ALTER TABLE "Task" ADD CONSTRAINT "Task_projectGroupId_fkey" FOREIGN KEY ("projectGroupId") REFERENCES "ProjectGroup"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "_DepartMentToUser" ADD CONSTRAINT "_DepartMentToUser_A_fkey" FOREIGN KEY ("A") REFERENCES "department"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "Task" ADD CONSTRAINT "Task_projectId_fkey" FOREIGN KEY ("projectId") REFERENCES "project"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "_DepartMentToUser" ADD CONSTRAINT "_DepartMentToUser_B_fkey" FOREIGN KEY ("B") REFERENCES "user"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "_DepartmentToUser" ADD CONSTRAINT "_DepartmentToUser_A_fkey" FOREIGN KEY ("A") REFERENCES "department"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "_DepartmentToUser" ADD CONSTRAINT "_DepartmentToUser_B_fkey" FOREIGN KEY ("B") REFERENCES "user"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "_ProjectToUser" ADD CONSTRAINT "_ProjectToUser_A_fkey" FOREIGN KEY ("A") REFERENCES "project"("id") ON DELETE CASCADE ON UPDATE CASCADE;

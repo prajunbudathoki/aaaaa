@@ -36,6 +36,8 @@ async function createUser(
 }
 
 async function main() {
+  const res = await prisma.project.findMany();
+  console.log(res);
   await createUser("Admin", "admin@gmail.com", "password", "admin");
   const user1 = await createUser("User", "user1@gmail.com", "password", "user");
   const user2 = await createUser("User", "user2@gmail.com", "password", "user");
